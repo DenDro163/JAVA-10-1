@@ -4,6 +4,10 @@ public class Radio {
     private int currentStation;// Текущая станция
     private int currentVolume;// Текущая громкость
 
+    public  Radio() {
+        
+    }
+
     public int getCurrentStation() {// геттер норм
         return currentStation;
     }
