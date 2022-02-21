@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RadioTest {
 
     @Test
-    public  void testGetMaxStation() {
+    public void testGetMaxStation() {
         Radio rad1 = new Radio(50);
         rad1.setMaxStation(50);
         int expected = 49;
@@ -21,7 +21,7 @@ public class RadioTest {
         Radio rad1 = new Radio(50);
         rad1.setMaxStation(50);
         rad1.setCurrentStation(10);
-                int expected = 10;
+        int expected = 10;
         int actual = rad1.getCurrentStation();
         assertEquals(expected, actual);
 

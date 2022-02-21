@@ -2,9 +2,10 @@ package ru.netology.domain;
 
 public class Radio {
     private int currentStation;// Текущая станция
-    private int amountStation ;// Количество станций
+    private int amountStation;// Количество станций
     private int minStation = 0;// Номер первой станции
-    private int maxStation = 10 - 1;  ;// Номер последней станции
+    private int maxStation = 10 - 1;
+    ;// Номер последней станции
     private int currentVolume;// Текущая громкость
 
 
@@ -30,13 +31,13 @@ public class Radio {
     }
 
 
-public void setMaxStation (int amountStation) {// сеттер для последней станции
-      this.maxStation = amountStation - 1;
-}
+    public void setMaxStation(int amountStation) {// сеттер для последней станции
+        this.maxStation = amountStation - 1;
+    }
 
-public  int getMaxStation () {// геттер для последней станции
+    public int getMaxStation() {// геттер для последней станции
         return maxStation;
-}
+    }
 
     public void next() {// Следующая станция
         if (currentStation == maxStation) {
@@ -53,8 +54,6 @@ public  int getMaxStation () {// геттер для последней стан
             this.currentStation = currentStation - 1;
         }
     }
-
-
 
 
     public int getCurrentVolume() {// геттер норм
