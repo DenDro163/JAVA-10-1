@@ -7,11 +7,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RadioTest {
 
     @Test
-    public void testGetMaxStation() {
-        Radio rad1 = new Radio(50);
-        rad1.setMaxStation(50);
-        int expected = 49;
-        int actual = rad1.getMaxStation();
+    public void testGetAmountStation() {
+        Radio rad1 = new Radio(20);
+        int expected = 20;
+        int actual = rad1.getAmountStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+
+    public void testForCheckMistake() {// Доп проверка к комментарию проверяющего ДЗ
+        Radio rad1 = new Radio(20);
+        rad1.setCurrentStation(15);
+        int expected = 15;
+        int actual = rad1.getCurrentStation();
         assertEquals(expected, actual);
     }
 
@@ -19,7 +29,6 @@ public class RadioTest {
     @Test
     public void testSetStationModify() {
         Radio rad1 = new Radio(50);
-        rad1.setMaxStation(50);
         rad1.setCurrentStation(10);
         int expected = 10;
         int actual = rad1.getCurrentStation();
@@ -30,7 +39,6 @@ public class RadioTest {
     @Test
     public void testSetStationModifyOverLimit() {
         Radio rad1 = new Radio(50);
-        rad1.setMaxStation(50);
         rad1.setCurrentStation(50);
         int expected = 0;
         int actual = rad1.getCurrentStation();
@@ -41,7 +49,6 @@ public class RadioTest {
     @Test
     public void testSetStationModifyUnderLimit() {
         Radio rad1 = new Radio(50);
-        rad1.setMaxStation(50);
         rad1.setCurrentStation(-1);
         int expected = 0;
         int actual = rad1.getCurrentStation();
