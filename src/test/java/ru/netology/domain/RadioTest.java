@@ -7,7 +7,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RadioTest {
 
     @Test
-    public void testGetAmountStation() {
+    public void testGetAmountStationDefaultConstructor() {
+        Radio rad1 = new Radio();
+        int expected = 10;
+        int actual = rad1.getAmountStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetAmountStationNotDefaultConstructor() {
         Radio rad1 = new Radio(20);
         int expected = 20;
         int actual = rad1.getAmountStation();
@@ -15,49 +24,9 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-
-    public void testForCheckMistake() {// Доп проверка к комментарию проверяющего ДЗ
-        Radio rad1 = new Radio(20);
-        rad1.setCurrentStation(15);
-        int expected = 15;
-        int actual = rad1.getCurrentStation();
-        assertEquals(expected, actual);
-    }
-
 
     @Test
-    public void testSetStationModify() {
-        Radio rad1 = new Radio(50);
-        rad1.setCurrentStation(10);
-        int expected = 10;
-        int actual = rad1.getCurrentStation();
-        assertEquals(expected, actual);
-
-    }
-
-    @Test
-    public void testSetStationModifyOverLimit() {
-        Radio rad1 = new Radio(50);
-        rad1.setCurrentStation(50);
-        int expected = 0;
-        int actual = rad1.getCurrentStation();
-        assertEquals(expected, actual);
-
-    }
-
-    @Test
-    public void testSetStationModifyUnderLimit() {
-        Radio rad1 = new Radio(50);
-        rad1.setCurrentStation(-1);
-        int expected = 0;
-        int actual = rad1.getCurrentStation();
-        assertEquals(expected, actual);
-
-    }
-
-    @Test
-    public void testSetStation() {// норм
+    public void testSetStationDefaultConstructor() {// норм
         Radio rad = new Radio();
         rad.setCurrentStation(7);
         int expected = 7;
@@ -67,7 +36,7 @@ public class RadioTest {
     }
 
     @Test
-    public void testSetStationUnderLimit() {// норм
+    public void testSetStationUnderLimitDefaultConstructor() {// норм
         Radio rad = new Radio();
         rad.setCurrentStation(-1);
         int expected = 0;
@@ -77,7 +46,7 @@ public class RadioTest {
     }
 
     @Test
-    public void testSetStationOverLimit() {// норм
+    public void testSetStationOverLimitDefaultConstructor() {// норм
         Radio rad = new Radio();
         rad.setCurrentStation(10);
         int expected = 0;
@@ -87,7 +56,37 @@ public class RadioTest {
     }
 
     @Test
-    public void testNextStation() {// норм
+    public void testSetStationNotDefaultConstructor() {
+        Radio rad1 = new Radio(50);
+        rad1.setCurrentStation(15);
+        int expected = 15;
+        int actual = rad1.getCurrentStation();
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void testSetStationOverLimitNotDefaultConstructor() {
+        Radio rad1 = new Radio(50);
+        rad1.setCurrentStation(50);
+        int expected = 0;
+        int actual = rad1.getCurrentStation();
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void testSetStationUnderLimitNotDefaultConstructor() {
+        Radio rad1 = new Radio(50);
+        rad1.setCurrentStation(-1);
+        int expected = 0;
+        int actual = rad1.getCurrentStation();
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void testNextStationDefaultConstructor() {// норм
         Radio rad = new Radio();
         rad.setCurrentStation(6);
         rad.next();
@@ -97,7 +96,7 @@ public class RadioTest {
     }
 
     @Test
-    public void testNextStationAfterMax() {// норм
+    public void testNextStationAfterMaxDefaultConstructor() {// норм
         Radio rad = new Radio();
         rad.setCurrentStation(9);
         rad.next();
@@ -107,7 +106,27 @@ public class RadioTest {
     }
 
     @Test
-    public void testPrevStation() {// норм
+    public void testNextStationNotDefaultConstructor() {// норм
+        Radio rad = new Radio(50);
+        rad.setCurrentStation(15);
+        rad.next();
+        int expected = 16;
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testNextStationAfterMaxNotDefaultConstructor() {// норм
+        Radio rad = new Radio(50);
+        rad.setCurrentStation(49);
+        rad.next();
+        int expected = 0;
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrevStationDefaultConstructor() {// норм
         Radio rad = new Radio();
         rad.setCurrentStation(6);
         rad.prev();
@@ -116,8 +135,9 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
 
+
     @Test
-    public void testPrevStationLessMin() {// норм
+    public void testPrevStationLessMinDefaultConstructor() {// норм
         Radio rad = new Radio();
         rad.setCurrentStation(0);
         rad.prev();
@@ -125,6 +145,28 @@ public class RadioTest {
         int actual = rad.getCurrentStation();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testPrevStationNotDefaultConstructor() {// норм
+        Radio rad = new Radio(50);
+        rad.setCurrentStation(8);
+        rad.prev();
+        int expected = 7;
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void testPrevStationLessMinNotDefaultConstructor() {// норм
+        Radio rad = new Radio(50);
+        rad.setCurrentStation(0);
+        rad.prev();
+        int expected = 49;
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+
 
     @Test
     public void testSetVolume() {// норм

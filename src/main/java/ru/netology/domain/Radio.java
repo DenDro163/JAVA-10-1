@@ -12,7 +12,7 @@ public class Radio {
 
     public Radio(int amountStation) {// Конструктор с 1 параметром
         this.amountStation = amountStation;
-    }
+    }// Конструктор с одим параметром
 
     public int getAmountStation() {
         return amountStation;
@@ -35,7 +35,7 @@ public class Radio {
 
     public void next() {// Следующая станция
         if (currentStation == amountStation - 1) {
-            setCurrentStation(currentStation = 0);
+            setCurrentStation(currentStation = minStation);
         } else {
             this.currentStation = currentStation + 1;
         }
@@ -43,7 +43,7 @@ public class Radio {
 
     public void prev() {// Предыдущ станция
         if (currentStation == minStation) {
-            setCurrentStation(currentStation = 9);
+            setCurrentStation(amountStation - 1);
         } else {
             this.currentStation = currentStation - 1;
         }
